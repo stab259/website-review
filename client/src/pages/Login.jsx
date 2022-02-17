@@ -12,22 +12,20 @@ function Login() {
     axios.defaults.withCredentials = true;
     const login = () => {
 
-        const data = { username: username, password: password }
-        axios.post("http://localhost:3001/login", data).then((response) => {
+        const data = { username: username, user_password: password }
+        axios.post("http://localhost:3001/Users/login", data).then((response) => {
 
             if (response.data.error) {
                 alert(response.data.error)
             }
             localStorage.setItem("accessToken", response.data.token)
-            console.log(response.data.nick_name)
             setAuthState({
                 username: response.data.username,
                 id: response.data.id,
-                nickname: response.data.nick_name,
                 status: true,
             });
         })
-        navigate.push('/')
+        navigate('/')
     }
     return (
         <Container fluid className="px-3">
@@ -39,8 +37,8 @@ function Login() {
                         </div>
                         <Form>
                             <Form.Group class="mb-4" controlId="formBasicEmail">
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" required onChange={(e) => {
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control type="string" placeholder="Enter username" required onChange={(e) => {
                                     setUsername(e.target.value);
                                 }} />
                             </Form.Group>

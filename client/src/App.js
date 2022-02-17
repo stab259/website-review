@@ -25,12 +25,11 @@ function App() {
   const [authState, setAuthState] = useState({
     username: "",
     id: 0,
-    nickname: "",
     status: false
   })
 
   useEffect(() => {
-    axios.get("http://localhost:3001/auth", {
+    axios.get("http://localhost:3001/users/auth", {
       headers: {
         accessToken: localStorage.getItem("accessToken")
       }
@@ -41,7 +40,6 @@ function App() {
         setAuthState({
           username: response.data.username,
           id: response.data.id,
-          nickname: response.data.nick_name,
           status: true
         });
       }

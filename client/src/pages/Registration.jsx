@@ -7,13 +7,13 @@ function Registration() {
 
     const [usernameReg, setUsernameReg] = useState("");
     const [passwordReg, setPasswordReg] = useState("");
-    const [nicknameReg, setNicknameReg] = useState("");
+    const [emailReg, setEmailReg] = useState("");
     let navigate = useNavigate();
     const signup = () => {
-        const data = { username: usernameReg, password: passwordReg, nickname: nicknameReg }
-        axios.post("http://localhost:3001/register", data).then((response) => {
+        const data = { user_email: emailReg, username: usernameReg, user_password: passwordReg }
+        axios.post("http://localhost:3001/users", data).then((response) => {
             alert(response.data)
-            navigate.push('/Login')
+            navigate('/Login')
 
         })
     }
@@ -30,15 +30,15 @@ function Registration() {
                         </div>
                         <Form>
                             <Form.Group class="mb-4" controlId="formBasicEmail">
-                                <Form.Label>Nick Name</Form.Label>
-                                <Form.Control type="email" placeholder="Account name" required onChange={(e) => {
-                                    setNicknameReg(e.target.value);
+                                <Form.Label>User Name</Form.Label>
+                                <Form.Control type="string" placeholder="Account name" required onChange={(e) => {
+                                    setUsernameReg(e.target.value);
                                 }} />
                             </Form.Group>
                             <Form.Group class="mb-4" controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control type="email" placeholder="Enter email" required onChange={(e) => {
-                                    setUsernameReg(e.target.value);
+                                    setEmailReg(e.target.value);
                                 }} />
                             </Form.Group>
                             <Form.Group class="mb-4" controlId="formBasicPassword">
