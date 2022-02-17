@@ -5,10 +5,12 @@ import './App.scss'
 import './index.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from './component/Header';
+import Footer from './component/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import ResetPassword from './component/Home';
+import WriteReviews from './pages/WriteReviews';
 // import AllPost from './pages/AllPost';
 // import PostByID from './pages/PostByID';
 // import NewDetails from './pages/NewDetails';
@@ -58,13 +60,16 @@ function App() {
             <Route path="/Signup" exact element={<Registration />} />
             <Route path="/Post/:id" exact element={<Post />} />
             <Route path='/reset-password/:id' exact element={<ResetPassword />} />
+            <Route path="/Post" exact element={<Post />} />
+            <Route path="/WriteReviews" exact element={<WriteReviews />} />
             {/* <Route path="/Posts" exact element={<AllPost />} />
             <Route path="/Middle" exact element={<MiddlePage />} />
             <Route path="/Posts/:id" exact element={<PostByID />} />
             <Route path="/Details" exact element={<NewDetails />} />
-            <Route path="/WriteReview" exact element={<WriteReview />} /> */}
+            <Route path="/WriteReviews" exact element={<WriteReviews />} /> */}
             {/* <Route path="/Admin" exact element={<Admin />} /> */}
           </Routes>
+          <Footer />
         </Router>
       </AuthContext.Provider>
     </div>

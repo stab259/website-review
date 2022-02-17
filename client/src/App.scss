@@ -30,8 +30,20 @@ ol {
   list-style: none;
 }
 
+.bg-primary {
+  background-color: #ffc107 !important;
+}
+
 .text-primary {
-  color: #4e66f8 !important;
+  color: #ffc107 !important;
+}
+
+.text-primary-8 {
+  color: $yellow-800 !important;
+}
+
+.text-primary-9 {
+  color: $yellow-900 !important;
 }
 
 .text-secondary {
@@ -39,9 +51,9 @@ ol {
 }
 
 .primary {
-  color: #fff;
-  background-color: #4e66f8;
-  border-color: #4e66f8;
+  color: #000;
+  background-color: #ffc107;
+  border-color: #ffc107;
 }
 
 .btn {
@@ -51,8 +63,18 @@ ol {
 }
 
 .btn-link {
-  color: #4e66f8;
+  color: #ffc107;
   text-decoration: none;
+}
+
+.btn-primary {
+  background-color: $yellow !important;
+  color: #000 !important;
+}
+
+.btn-primary:hover {
+  background-color: rgba($yellow-700, 0.7);
+  border-color: rgba($yellow-700, 0.7);
 }
 
 .badge {
