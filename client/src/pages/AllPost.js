@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 function AllPost() {
     const [listOfPosts, setListOfPosts] = useState([])
-    let history = useHistory()
+    let navigate = useNavigate()
     useEffect(() => {
         axios.get("http://localhost:3001/GetAllPost").then((response) => {
             setListOfPosts(response.data);
@@ -25,9 +25,9 @@ function AllPost() {
                                     <img class="p2-brief-post__image" src={value.img_src} alt="photo1" />
                                 </div>
                                 <div class="p2-brief-post__content">
-                                    <h3 class="p2-heading-3" onClick={() => history.push(`/Posts/${value.post_id}`)}>{value.title}</h3>
+                                    <h3 class="p2-heading-3" onClick={() => navigate.push(`/Posts/${value.post_id}`)}>{value.title}</h3>
                                     <p class="p2-paragraph">{value.content}</p>
-                                    <button class="p2-btn btn--black" onClick={() => history.push(`/Posts/${value.post_id}`)}>Xem thêm</button>
+                                    <button class="p2-btn btn--black" onClick={() => navigate.push(`/Posts/${value.post_id}`)}>Xem thêm</button>
                                 </div>
                             </section>
                         )
