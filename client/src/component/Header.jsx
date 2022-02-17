@@ -41,7 +41,7 @@ function Header() {
                             <Dropdown.Menu>
                                 <Dropdown.Item as={Link} to='/'>Profile</Dropdown.Item>
                                 <Dropdown.Divider/>
-                                <Dropdown.Item as={Link} to='/'>Sign out</Dropdown.Item>
+                                <Dropdown.Item onClick={logout} >Sign out</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     )}

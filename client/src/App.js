@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Registration from './pages/Registration';
 // import ResetPassword from './component/Home';
 import WriteReviews from './pages/WriteReviews';
+//import ResetPassword from './pages/ResetPassword';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import AllPosts from './pages/AllPosts';
