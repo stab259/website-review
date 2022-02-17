@@ -7,7 +7,7 @@ const { sign } = require("jsonwebtoken");
 var randtoken = require('rand-token');
 var nodemailer = require('nodemailer');
 
-function sendEmail(email, token) {
+function sendEmail(email, token,subject, html) {
  
   var email = email;
   var token = token;
@@ -21,10 +21,10 @@ function sendEmail(email, token) {
   });
 
   var mailOptions = {
-      from: 'tutsmake@gmail.com',
+      from: 'duong1906ltv@gmail.com',
       to: email,
-      subject: 'Reset Password Link - Tutsmake.com',
-      html: '<p>You requested for reset password, kindly use this <a href="http://localhost:3000/reset-password/' + token + '">link</a> to reset your password</p>'
+      subject: subject,
+      html: html
 
   };
 
@@ -42,18 +42,20 @@ router.post('/reset-password-email', async(req, res)=> {
   const user = await Users.findOne({ where: { user_email: email } });
   if (!user) res.json({ error: "User Doesn't Exist" });
   const token = randtoken.generate(20)
-  const sent = sendEmail(email,token);
+  subject = 'Reset Password Link';
+  html = '<p>You requested for reset password, kindly use this <a href="http://localhost:3000/reset-password/' + token + '">link</a> to reset your password</p>'
+  const sent = sendEmail(email,token,subject,html);
   if (sent !=0){
-    await Users.update({ token: token }, { where: { user_email: email } });
+    await Users.update({ reset_token: token }, { where: { user_email: email } });
     res.json("The reset password link has been sent to your email address")
   }
   else{
-    res.json("SOme thing went wrong!!!")
+    res.json("Some thing went wrong!!!")
   }
 })
 router.post('/reset-password', async(req,res) =>{
   const { token, newPassword } = req.body;
-  const user = await Users.findOne({ where: { token: token } });
+  const user = await Users.findOne({ where: { reset_token: token } });
   if (!user) res.json({ error: "User Doesn't Exist" });
   bcrypt.hash(newPassword, 10).then((hash) => {
     Users.update(
@@ -62,6 +64,30 @@ router.post('/reset-password', async(req,res) =>{
     );
     res.json("SUCCESS");
   });
+})
+router.post('/send_email_comfirm', async(req,res) =>{
+  const email = req.body.email;
+  const user = await Users.findOne({ where: { user_email: email } });
+  if (!user) res.json({ error: "User Doesn't Exist" });
+  const token = randtoken.generate(20)
+  subject = 'Confirm your email';
+  html = '<p>Please click here <a href="http://localhost:3000/confirm_email/' + token + '">link</a> to confirm your email</p>'
+  const sent = sendEmail(email,token,subject,html);
+  if (sent !=0){
+    await Users.update({ confirm_token: token }, { where: { user_email: email } });
+    res.json("The reset password link has been sent to your email address")
+  }
+  else{
+    res.json("Some thing went wrong!!!")
+  }
+})
+router.post('/confirm_email', async(req,res) =>{
+  const { token } = req.body;
+  const user = await Users.findOne({ where: { confirm_token: token } });
+  if (!user) res.json({ error: "User Doesn't Exist" });
+  Users.update({confirmed: true}, { where: { confirm_token: token }});
+  res.json("SUCCESS")
+
 })
 router.post("/", async (req, res) => {
     const { user_email, username, user_password } = req.body;
@@ -84,7 +110,7 @@ router.post("/login", async (req, res) => {
 
   bcrypt.compare(user_password, user.user_password).then(async (match) => {
       if (!match) res.json({ error: "Wrong Username And Password Combination" });
-
+      if (!user.confirmed) res.json({error: "Your account have not been confirmed. Please check your email!!!"})
       const accessToken = sign(
       { username: user.username, id: user.id },
       "importantsecret"

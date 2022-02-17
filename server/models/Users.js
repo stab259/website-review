@@ -25,9 +25,18 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: "User",
       },
-      token :  {
+      confirm_token :  {
         type: DataTypes.STRING,
         allowNull: true,
+      },
+      reset_token: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      confirmed : {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       }
     });
     Users.associate = (models) => {

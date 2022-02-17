@@ -18,6 +18,7 @@ function Login() {
             if (response.data.error) {
                 alert(response.data.error)
             }
+            alert(response.data)
             localStorage.setItem("accessToken", response.data.token)
             setAuthState({
                 username: response.data.username,
