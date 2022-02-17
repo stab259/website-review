@@ -35,13 +35,6 @@ function WriteReviews() {
               </div>
               <Form.Group className="mb-4">
                   <Form.Label className="label text-primary-8">Post Title</Form.Label>
-                  <Form.Control type="text" name="title"/>
-              </Form.Group>
-              <Form.Group className="mb-4">
-                  <Form.Label className="label text-primary-8">Category</Form.Label>
-                  <Form.Select name="post_category">
-                    <option value="travel">Travel</option>
-                  </Form.Select>
                   <Form.Control type="text" name="title" onChange = {(e) => {setTitle(e.target.value);}}/>
               </Form.Group>
               <Form.Group className="mb-4">
@@ -50,7 +43,7 @@ function WriteReviews() {
               </Form.Group>
               <Form.Group className="mb-4">
                   <Form.Label className="label text-primary-8">Post Content</Form.Label>
-                  <textarea name="post_content" id="summernote" cols="30" rows="10" class="form-control" onChange = {(e) => {setContent(e.target.value);}}></textarea>
+                  <textarea name="post_content" id="summernote" cols="30" rows="10" class="form-control" style={{resize:"none"}} onChange = {(e) => {setContent(e.target.value);}}></textarea>
               </Form.Group>
               <Form.Group className="mb-4">
                   <Button type="submit" className="primary btn-primary" onClick={uploadFile}>Publish Post</Button>
