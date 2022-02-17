@@ -24,7 +24,7 @@ function sendEmail(email, token) {
       from: 'tutsmake@gmail.com',
       to: email,
       subject: 'Reset Password Link - Tutsmake.com',
-      html: '<p>You requested for reset password, kindly use this <a href="http://localhost:3000/reset-password?token=' + token + '">link</a> to reset your password</p>'
+      html: '<p>You requested for reset password, kindly use this <a href="http://localhost:3000/reset-password/' + token + '">link</a> to reset your password</p>'
 
   };
 

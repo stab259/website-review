@@ -9,6 +9,7 @@ import Footer from './component/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import ResetPassword from './component/Home';
 import WriteReviews from './pages/WriteReviews';
 import ResetPassword from './pages/ResetPassword';
 // import AllPost from './pages/AllPost';
@@ -58,6 +59,8 @@ function App() {
             <Route path="/Home" exact element={<Home />} />
             <Route path="/Login" exact element={<Login />} />
             <Route path="/Signup" exact element={<Registration />} />
+            <Route path="/Post/:id" exact element={<Post />} />
+            <Route path='/reset-password/:id' exact element={<ResetPassword />} />
             <Route path="/Post" exact element={<Post />} />
             <Route path="/WriteReviews" exact element={<WriteReviews />} />
             <Route path="/ResetPassword" exact element={<ResetPassword />} />
