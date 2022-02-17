@@ -14,6 +14,7 @@ function PostDetails() {
     useEffect(() => {
         axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
           setPostObject(response.data);
+
         });
     }, []);
   return (
@@ -29,7 +30,7 @@ function PostDetails() {
                         Written by
                         <a href="#" className="fw-bold"> {postObject.username}</a>
                         <span className="mx-1"> | </span>
-                        {postObject.createdAt} in 
+                        {postObject.createdAt} in
                         <a href="#"> Stay</a>
                         <span className="mx-1"> | </span>
                         <a href="#" className="text-muted">3 comments</a>
@@ -40,7 +41,7 @@ function PostDetails() {
                 <Col xl={11} lg={12} className="mr-auto">
                     <div className="text-content">
                         <p>
-                            <img src="https://images.unsplash.com/photo-1601972888880-3ad2df3ee0a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTg0fHx2aWV0bmFtfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1000&q=60" alt="stay" className="img-fluid" />
+                            <img src={postObject.imgsrc} alt="stay" className="img-fluid" />
                         </p>
                         <p className='text-muted'>
                             {postObject.postText}

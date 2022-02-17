@@ -51,6 +51,18 @@ router.post('/reset-password-email', async(req, res)=> {
     res.json("SOme thing went wrong!!!")
   }
 })
+router.post('/reset-password', async(req,res) =>{
+  const { token, newPassword } = req.body;
+  const user = await Users.findOne({ where: { token: token } });
+  if (!user) res.json({ error: "User Doesn't Exist" });
+  bcrypt.hash(newPassword, 10).then((hash) => {
+    Users.update(
+      { user_password: hash },
+      { where: { token: token } }
+    );
+    res.json("SUCCESS");
+  });
+})
 router.post("/", async (req, res) => {
     const { user_email, username, user_password } = req.body;
     bcrypt.hash(user_password, 10).then((hash) => {
@@ -64,21 +76,21 @@ router.post("/", async (req, res) => {
   });
   
 router.post("/login", async (req, res) => {
-const { username, user_password } = req.body;
+  const { username, user_password } = req.body;
 
-const user = await Users.findOne({ where: { username: username } });
+  const user = await Users.findOne({ where: { username: username } });
 
-if (!user) res.json({ error: "User Doesn't Exist" });
+  if (!user) res.json({ error: "User Doesn't Exist" });
 
-bcrypt.compare(user_password, user.user_password).then(async (match) => {
-    if (!match) res.json({ error: "Wrong Username And Password Combination" });
+  bcrypt.compare(user_password, user.user_password).then(async (match) => {
+      if (!match) res.json({ error: "Wrong Username And Password Combination" });
 
-    const accessToken = sign(
-    { username: user.username, id: user.id },
-    "importantsecret"
-    );
-    res.json({ token: accessToken, username: username, id: user.id });
-});
+      const accessToken = sign(
+      { username: user.username, id: user.id },
+      "importantsecret"
+      );
+      res.json({ token: accessToken, username: username, id: user.id });
+  });
 });
 router.get("/auth", validateToken, (req, res) => {
     res.json(req.user);
