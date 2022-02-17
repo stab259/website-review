@@ -10,7 +10,6 @@ function Nav() {
         setAuthState({
             username: "",
             id: 0,
-            nickname: "",
             status: false
         })
     }
