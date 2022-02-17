@@ -178,10 +178,10 @@ function Home() {
                         <h2>From our review travel blog</h2>
                     </Col>
                     <Col md={4} className="d-md-flex align-items-center justify-content-end">
-                        <a href="#" className="text-muted text-sm">
+                        <Link to='/AllPosts' className="text-muted text-sm">
                             See all articles
                             <FaAngleDoubleRight className='ms-2'></FaAngleDoubleRight>
-                        </a>
+                        </Link>
                     </Col>
                 </Row>
                 <Row className="card-group">

@@ -31,23 +31,23 @@ function Registration() {
                         <Form>
                             <Form.Group class="mb-4" controlId="formBasicEmail">
                                 <Form.Label>User Name</Form.Label>
-                                <Form.Control type="string" placeholder="Account name" required onChange={(e) => {
+                                <Form.Control type="string" required onChange={(e) => {
                                     setUsernameReg(e.target.value);
                                 }} />
                             </Form.Group>
                             <Form.Group class="mb-4" controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" required onChange={(e) => {
+                                <Form.Control type="email" required onChange={(e) => {
                                     setEmailReg(e.target.value);
                                 }} />
                             </Form.Group>
                             <Form.Group class="mb-4" controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" required required minlength="3" maxlength="20" />
+                                <Form.Control type="password" required required minlength="3" maxlength="20" />
                             </Form.Group>
                             <Form.Group class="mb-4" controlId="formBasicPassword">
                                 <Form.Label>Confirm your password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" required required minlength="3" maxlength="20"
+                                <Form.Control type="password" required required minlength="3" maxlength="20"
                                 onChange={(e) => {
                                     setPasswordReg(e.target.value);
                                 }} />

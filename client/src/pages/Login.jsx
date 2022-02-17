@@ -38,7 +38,7 @@ function Login() {
                         <Form>
                             <Form.Group class="mb-4" controlId="formBasicEmail">
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="string" placeholder="Enter username" required onChange={(e) => {
+                                <Form.Control type="string" required onChange={(e) => {
                                     setUsername(e.target.value);
                                 }} />
                             </Form.Group>
@@ -49,11 +49,11 @@ function Login() {
                                     </Col>
                                     <Col className="col-auto">
                                         <Form.Text>
-                                            <Link to='/ResetPassword' className='small text-primary'>Forgot password?</Link>
+                                            <Link to='/ForgotPassword' className='small text-primary'>Forgot password?</Link>
                                         </Form.Text>
                                     </Col>
                                 </Row>
-                                <Form.Control type="password" placeholder="Password" required onChange={(e) => {
+                                <Form.Control type="password" required onChange={(e) => {
                                     setPassword(e.target.value);
                                 }} />
                             </Form.Group>

@@ -2,7 +2,7 @@ import {Container, Row, Col, Form, Button} from 'react-bootstrap'
 
 function WriteReviews() {
   return (
-    <div className="bg-image-form">
+    <div className="bg-image-form bg-image-write-reviews">
       <Container className="py-5">
         <Row className="d-flex justify-content-center align-items-center">
           <Col md={8}>
@@ -18,19 +18,6 @@ function WriteReviews() {
                   <Form.Label className="label text-primary-8">Category</Form.Label>
                   <Form.Select name="post_category">
                     <option value="travel">travel</option>
-                  </Form.Select>
-              </Form.Group>
-              <Form.Group className="mb-4">
-                  <Form.Label className="label text-primary-8" >User</Form.Label>
-                  <Form.Select name="post_user">
-                      <option value="nhien">nhien</option>
-                  </Form.Select>
-              </Form.Group>
-              <Form.Group className="mb-4">
-                  <Form.Select name="post_status">
-                      <option value="draft">Post Status</option>
-                      <option value="published">Published</option>
-                      <option value="draft">Draft</option>
                   </Form.Select>
               </Form.Group>
               <Form.Group className="mb-4">
