@@ -8,6 +8,7 @@ import Header from './component/Header';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import ResetPassword from './component/Home';
 // import AllPost from './pages/AllPost';
 // import PostByID from './pages/PostByID';
 // import NewDetails from './pages/NewDetails';
@@ -55,7 +56,8 @@ function App() {
             <Route path="/Home" exact element={<Home />} />
             <Route path="/Login" exact element={<Login />} />
             <Route path="/Signup" exact element={<Registration />} />
-            <Route path="/Post" exact element={<Post />} />
+            <Route path="/Post/:id" exact element={<Post />} />
+            <Route path='/reset-password/:id' exact element={<ResetPassword />} />
             {/* <Route path="/Posts" exact element={<AllPost />} />
             <Route path="/Middle" exact element={<MiddlePage />} />
             <Route path="/Posts/:id" exact element={<PostByID />} />
