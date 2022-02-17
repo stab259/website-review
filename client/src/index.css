@@ -12,6 +12,21 @@ code {
 
 /* stylelint-disable selector-list-comma-newline-after */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman",
+    serif /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+}
+
+h2,
+.h2 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+
 /* ---------- Header ---------- */
 
 .header {
@@ -30,19 +45,35 @@ code {
   text-decoration: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Playfair Display", Georgia, "Times New Roman",
-    serif /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+.header-sticky {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  z-index: 100;
+  width: 100%;
 }
 
-h2,
-.h2 {
-  font-size: calc(1.325rem + 0.9vw);
+#dropdown-link-light {
+  background-color: #fff !important;
+  border-color: #fff !important;
+  outline: none !important;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 500;
+}
+
+#dropdown-link-light.active.focus,
+#dropdown-link-light.active:focus,
+#dropdown-link-light.focus,
+#dropdown-link-light:active.focus,
+#dropdown-link-light:active:focus,
+#dropdown-link-light:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: white;
 }
 
 /* -----x----- Header END -----x----- */

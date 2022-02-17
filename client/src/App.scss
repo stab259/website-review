@@ -53,7 +53,16 @@ ol {
 .primary {
   color: #000;
   background-color: #ffc107;
-  border-color: #ffc107;
+}
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .btn {
@@ -70,11 +79,29 @@ ol {
 .btn-primary {
   background-color: $yellow !important;
   color: #000 !important;
+  border-color: $yellow !important;
 }
 
 .btn-primary:hover {
   background-color: rgba($yellow-700, 0.7);
   border-color: rgba($yellow-700, 0.7);
+}
+
+.btn-primary-dark {
+  border: 1px solid $yellow-900;
+}
+
+.btn-primary-dark:hover {
+  transform: scale(1.05);
+}
+
+#dropdown-link-light {
+  background-color: #fff !important;
+  border-color: #fff !important;
+  outline: none !important;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 500;
 }
 
 .badge {
@@ -83,4 +110,8 @@ ol {
   font-weight: 400;
   border-radius: 0.25rem;
   color: #000;
+}
+
+.dropdown-menu.show {
+  width: 100%;
 }

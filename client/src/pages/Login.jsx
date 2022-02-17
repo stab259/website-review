@@ -49,7 +49,7 @@ function Login() {
                                     </Col>
                                     <Col className="col-auto">
                                         <Form.Text>
-                                            <a className='small text-primary' href="#">Forgot password?</a>
+                                            <Link to='/ResetPassword' className='small text-primary'>Forgot password?</Link>
                                         </Form.Text>
                                     </Col>
                                 </Row>
