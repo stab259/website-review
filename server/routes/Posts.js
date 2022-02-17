@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const { upload } = require("../middlewares/uploadMiddleware");
 const { Posts, Likes } = require("../models");
 
 const { validateToken } = require("../middlewares/AuthMiddleware");
@@ -57,4 +57,24 @@ router.delete("/:postId", validateToken, async (req, res) => {
   res.json("DELETED SUCCESSFULLY");
 });
 
+
+router.post("/upload", upload.single('file'),validateToken, (req, res) => {
+    if (!req.file) {
+        console.log("No file upload"); 
+    } else {
+        console.log(req.file.filename)
+        const user_id = req.user.id
+        const title = req.body.title
+        const content = req.body.content
+        const username = req.user.username
+        var imgsrc = 'http://127.0.0.1:3001/images/' + req.file.filename
+        Posts.create({
+            title : title,
+            postText: content,
+            username: username,
+            imgsrc : imgsrc,
+            UserId : user_id   
+          });
+    }
+});
 module.exports = router;

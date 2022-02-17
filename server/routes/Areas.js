@@ -7,6 +7,7 @@ router.get("/", async (req, res) => {
     const listOfAreas = await Areas.findAll();
     res.json(listOfAreas);
   });
+
 router.post("/AddArea",upload.single('file'), async (req, res) => {
     if (!req.file) {
         console.log("No file upload");
