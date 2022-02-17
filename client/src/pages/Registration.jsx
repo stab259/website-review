@@ -53,7 +53,7 @@ function Registration() {
                                 }} />
                             </Form.Group>
                             <div className='d-grid my-3'>
-                                <Button className="btn-lg primary" type="submit" onClick={signup}>
+                                <Button className="btn-lg primary btn-primary" type="submit" onClick={signup}>
                                     Sign up
                                 </Button>
                             </div>

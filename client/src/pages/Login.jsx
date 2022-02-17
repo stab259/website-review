@@ -63,7 +63,7 @@ function Login() {
                                 <Form.Check className="text-muted" type="checkbox" label="Remember me" />
                             </Form.Group>
                             <div className='d-grid my-3'>
-                                <Button className="btn-lg primary" type="submit" onClick={login}>
+                                <Button className="btn-lg primary btn-primary" type="submit" onClick={login}>
                                     Login
                                 </Button>
                             </div>

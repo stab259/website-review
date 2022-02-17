@@ -23,6 +23,7 @@ code {
   font-family: "Playfair Display", Georgia, "Times New Roman",
     serif /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
   font-size: 2.25rem;
+  font-weight: 700;
 }
 
 .header-logo:hover {
@@ -45,6 +46,14 @@ h2,
 }
 
 /* -----x----- Header END -----x----- */
+
+/* ---------- Footer ---------- */
+
+.footer p {
+  margin: 0;
+}
+
+/* -----x----- Footer END -----x----- */
 
 /* ---------- Home ---------- */
 
@@ -96,6 +105,16 @@ h2,
   position: relative;
   align-items: center;
   background-image: url("https://idsb.tmgrup.com.tr/ly/uploads/images/2021/05/26/117393.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.bg-image-form {
+  display: flex;
+  position: relative;
+  align-items: center;
+  background: url("https://images.unsplash.com/photo-1609412058473-c199497c3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHZpZXRuYW18ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -269,3 +288,18 @@ a.hover-underline:hover {
 }
 
 /* -----x----- PostDetails -----x----- */
+
+/* ---------- WriteReviews ---------- */
+
+#writeReviewsForm {
+  background-color: #fff;
+  margin: 0px auto;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+#writeReviewsForm label {
+  font-weight: 600;
+}
+
+/* -----x----- WriteReviews -----x----- */
