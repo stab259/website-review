@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
-import {Container, Row, Col} from 'react-bootstrap'
-import {FaAngleRight, FaAngleDoubleRight, FaRegClock, FaArrowRight} from 'react-icons/fa'
+import {Container, Row, Col, Form, FormControl, Button} from 'react-bootstrap'
+import {FaAngleRight, FaAngleDoubleRight, FaRegClock, FaArrowRight, FaCrosshairs} from 'react-icons/fa'
 
 function Home() {
   return (
@@ -9,34 +9,34 @@ function Home() {
             <Container className="py-6 py-md-7 text-white z-index-20">
                 <Row className="justify-content-center">
                     <Col xl={10}>
-                        <div className="text-center">
-                            <h2>Travel with us</h2>
+                        <div className="text-center text-lg-start">
+                            <p className="subtitle letter-spacing-4 mb-2 text-primary text-shadow">The Best Place to Find and Share Review</p>
+                            <h1 className="display-3 fw-bold text-shadow">Welcome to Our Page</h1>
                         </div>
+                        {/* <div className="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
+                            <form action="#">
+                                <Row>
+                                    <Col lg={6} className="d-flex align-items-center form-group">
+                                        <input className="form-control border-0 shadow-0" type="text" name="search" placeholder="What are you searching for?" />
+                                    </Col>
+                                    <Col lg={4} className="d-flex align-items-center form-group">
+                                        <div className="input-label-absolute input-label-absolute-right w-100">
+                                            <label className="label-absolute">
+                                                <FaCrosshairs className=""/>
+                                            </label>
+                                            <input className="form-control border-0 shadow-0" type="text" name="location" placeholder="Location" />
+                                        </div>
+                                    </Col>
+                                    <Col lg={2} className="d-grid">
+                                        <Button className="btn-primary rounded-pill h-100" type="submit">Search</Button>
+                                    </Col>
+                                </Row>
+                            </form>
+                        </div> */}
                     </Col>
                 </Row>
             </Container>
-
         </Container>
-        {/* <Container fluid className="py-7 bg-gray-100">
-                <div className="text-center pb-lg-4">
-                    <p className="subtitle text-secondary">
-                        Hello
-                    </p>
-                    <h2 className="mb-5">
-                        With us
-                    </h2>
-                </div>
-                <Row>
-                    <Col className="col-lg-4 mb-3 mb-lg-0 text-center">
-                        <div className="px-0 px-lg-3">
-                            <div className="icon-rounded bg-primary-light mb-3">
-                                hi
-                            </div>
-                        </div>
-                    </Col>
-                </Row>
-        </Container> */}
-
         <div className="pt-6">
             <Container>
                 <Row className="mb-6">

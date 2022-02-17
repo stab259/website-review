@@ -9,11 +9,11 @@ function Sidebar() {
             </div>
             <div className="list-group-item d-flex justify-content-between align-items-center">
                 Central
-                <span className="badge">5</span>
+                <span className="badge bg-light">5</span>
             </div>
             <div className="list-group-item d-flex justify-content-between align-items-center">
                 South
-                <span className="badge">12</span>
+                <span className="badge bg-light">12</span>
             </div>
         </div>
         <div className="widget">

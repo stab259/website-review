@@ -14,6 +14,7 @@ import WriteReviews from './pages/WriteReviews';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import AllPosts from './pages/AllPosts';
+import Profile from './pages/Profile';
 // import AllPost from './pages/AllPost';
 // import PostByID from './pages/PostByID';
 // import NewDetails from './pages/NewDetails';
@@ -68,6 +69,7 @@ function App() {
             <Route path="/ForgotPassword" exact element={<ForgotPassword />} />
             <Route path="/ResetPassword" exact element={<ResetPassword />} />
             <Route path="/AllPosts" exact element={<AllPosts />} />
+            <Route path="/Profile" exact element={<Profile />} />
             {/* <Route path="/Posts" exact element={<AllPost />} />
             <Route path="/Middle" exact element={<MiddlePage />} />
             <Route path="/Posts/:id" exact element={<PostByID />} />
