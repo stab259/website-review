@@ -2,9 +2,27 @@ import {Container, Row, Col, Card, Form, Button, Nav, Dropdown } from "react-boo
 import {Link} from 'react-router-dom'
 import {FaSearch, FaUserAlt} from 'react-icons/fa'
 import AdminNav from "./AdminNav";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 
 function ViewAllPosts() {
+    function refreshPage() {
+        window.location.reload(false);
+      }
+    const [listofPosts, setListofPosts] = useState([]);
+    useEffect(()=>{
+        axios.get(`http://localhost:3001/posts`,{headers: {
+            accessToken : localStorage.getItem("accessToken")
+        }}).then((response)=>{
+            setListofPosts(response.data.listOfPosts);
+        })
+    },[])
+    const Delete = (id) =>{
+        axios.delete(`http://localhost:3001/posts/${id}`).then((response)=>{
+            refreshPage()
+        })
+    }
   return (
     <>
         <div className="d-flex" id="wrapper">
@@ -42,37 +60,29 @@ function ViewAllPosts() {
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Title</th>
                                             <th>Content</th>
+                                            <th>Image</th>
+                                            <th>Username</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td><Link to='/EditPost' className="text-green">Edit</Link></td>
-                                            <td><a href="#" className="text-red">Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td><Link to='/EditPost' className="text-green">Edit</Link></td>
-                                            <td><a href="#" className="text-red">Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td><Link to='/EditPost' className="text-green">Edit</Link></td>
-                                            <td><a href="#" className="text-red">Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td><Link to='/EditPost' className="text-green">Edit</Link></td>
-                                            <td><a href="#" className="text-red">Delete</a></td>
-                                        </tr>
+                                    {listofPosts.map((value)=>{
+                                        return(
+                                            <tr>
+                                            <td>{value.id}</td>
+                                            <td>{value.title}</td>
+                                            <td>{value.postText}</td>
+                                            <td><img src={value.imgsrc} alt="image" width={100}/> </td>
+                                            <td>{value.username}</td>
+                                            <td><Link to={'/EditPost/' + value.id} className="text-green">Edit</Link></td>
+                                            <td><Link to="/ViewAllUsers" className="text-red" onClick={() => {Delete(value.id)}}>Delete</Link></td>
+                                            </tr>
+                                        )
+                                    })}
                                     </tbody>
                                 </table>
                             </div>

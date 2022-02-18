@@ -2,9 +2,41 @@ import {Container, Row, Col, Card, Form, Button, Nav, Dropdown } from "react-boo
 import {Link} from 'react-router-dom'
 import {FaSearch, FaUserAlt} from 'react-icons/fa'
 import AdminNav from "./AdminNav";
-
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function EditPost() {
+    let {id} = useParams()
+    let navigate = useNavigate()
+    const [file, setFile] = useState();
+    const [fileName, setFileName] = useState("");
+    const [title, setTitle] = useState("")
+    const [content, setContent] = useState("")
+
+    useEffect(()=>{
+        axios.get(`http://localhost:3001/posts/ById/${id}`).then((response)=>{
+            setTitle(response.data.title);
+            setContent(response.data.postText);
+        })
+    },[])
+    const saveFile = (e) => {
+        setFile(e.target.files[0]);
+        setFileName(e.target.files[0].name);
+    };
+    const Edit = async (e) =>{
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("fileName", fileName);
+        formData.append("title",title)
+        formData.append("content",content)
+        axios.put(`http://localhost:3001/users/EditPost/${id}`,formData,{headers: {
+            accessToken : localStorage.getItem("accessToken")
+        }}).then((response)=>{
+            navigate("/ViewAllPosts")
+        })
+    }
   return (
     <>
         <div className="d-flex" id="wrapper">
@@ -43,18 +75,18 @@ function EditPost() {
                                     <Form id="writeReviewsForm">
                                     <Form.Group className="mb-4">
                                         <Form.Label className="label text-primary-8">Post Title</Form.Label>
-                                        <Form.Control type="text" name="title"/>
+                                        <Form.Control type="text" name="title" value= {title} onChange = {(e) => {setTitle(e.target.value);}}/>
                                     </Form.Group>
                                     <Form.Group className="mb-4">
                                         <Form.Label className="label text-primary-8">Post Image</Form.Label>
-                                        <Form.Control type="file" name="image"/>
+                                        <Form.Control type="file" name="image"  onChange = {saveFile}/>
                                     </Form.Group>
                                     <Form.Group className="mb-4">
                                         <Form.Label className="label text-primary-8">Post Content</Form.Label>
-                                        <textarea name="post_content" id="summernote" cols="30" rows="10" class="form-control" style={{resize:"none"}}></textarea>
+                                        <textarea name="post_content" id="summernote" cols="30" rows="10" class="form-control" style={{resize:"none"}} value= {content} onChange = {(e) => {setContent(e.target.value);}}></textarea>
                                     </Form.Group>
                                     <Form.Group className="mb-4">
-                                        <Button type="submit" className="primary btn-primary">Update Post</Button>
+                                        <Button type="submit" className="primary btn-primary" onClick={Edit}>Update Post</Button>
                                     </Form.Group>
                                     </Form>
                                 </Col>

@@ -13,9 +13,9 @@ import WriteReviews from './pages/WriteReviews';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import AllPosts from './pages/AllPosts';
-// import Profile from './pages/Profile';
+import Profile from './pages/Profile';
 import TravelForm from './component/TravelForm';
-
+import DashBoard from './pages/admin/Dashboard'
 import { AuthContext } from './helpers/AuthContext';
 import axios from 'axios';
 
@@ -76,11 +76,11 @@ function App() {
               <Route path="/AllPosts" exact element={<AllPosts />} />
               <Route path="/Profile" exact element={<Profile />} />
               <Route path="/Admin" exact element={<Admin />} />
-              
               <Route path="/ViewAllPosts" exact element={<ViewAllPosts />} />
-              <Route path="/EditPost" exact element={<EditPost />} />
+              <Route path="/EditPost/:id" exact element={<EditPost />} />
               <Route path="/ViewAllUsers" exact element={<ViewAllUsers />} />
               <Route path="/EditUser/:id" exact element={<EditUser />} />
+              <Route path="/Dashboard" exact element={<DashBoard />} />
             </Routes>
           </div>
           {(authState.role !== 'Admin') && (

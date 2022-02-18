@@ -2,13 +2,14 @@ import {Container, Row, Col, Card, Form, Button, Nav, Dropdown } from "react-boo
 import {Link} from 'react-router-dom'
 import {FaSearch, FaUserAlt} from 'react-icons/fa'
 import AdminNav from "./AdminNav";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useEffect } from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../helpers/AuthContext";
+
 
 function ViewAllPosts() {
+    function refreshPage() {
+        window.location.reload(false);
+      }
     const [userObjects, setUserObjects] = useState([]);
     useEffect(()=>{
         axios.get(`http://localhost:3001/users/GetAllUsers`).then((response)=>{
@@ -17,7 +18,7 @@ function ViewAllPosts() {
     },[])
     const Delete = (id) =>{
         axios.delete(`http://localhost:3001/users/${id}`).then((response)=>{
-
+            refreshPage()
         })
     }
   return (

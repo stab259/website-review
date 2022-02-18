@@ -1,19 +1,30 @@
-import {Container, Row, Col} from 'react-bootstrap'
-import Widget from '../component/Sidebar'
-import PostDetails from '../component/PostDetails'
+import React from 'react'
+import { Chart } from "react-google-charts";
+
+
+
 
 function Post() {
+
+  
+  const data = [
+    ["Text", "Count"],
+    ["post", 10],
+    ["user", 5],
+    ["confirmed user", 2],
+    ["admin", 1],
+    ["approved post", 3],
+    ["unapproved post", 6]
+  ];
   return (
-    <Container className="py-6">
-        <Row>
-            <Col md={8}>
-                <PostDetails />
-            </Col>
-            <Col md={4} className="pl-md-4">
-                <Widget />
-            </Col>
-        </Row>
-    </Container>
+    <div><Chart
+    chartType="ColumnChart"
+    data={data}
+    width="80%"
+    height="400px"
+    legendToggle
+  /></div>
   )
 }
+
 export default Post

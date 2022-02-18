@@ -1,10 +1,8 @@
 import {Container, Row, Col, Form, Button} from "react-bootstrap"
 
 function TravelForm({show, handleShow}) {
-    console.log(`hello ${show}`);
     let form = <div></div>
     if(show) {
-        console.log(`handle ${show}`);
         form = <div id="travelFormContainer">
             <div id="travelForm">
                 <Container className="py-5" id="travelFormChild">
