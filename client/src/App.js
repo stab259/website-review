@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss'
 import './index.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom'
 import Header from './component/Header';
 import Footer from './component/Footer';
 import Home from './pages/Home';
@@ -32,6 +32,7 @@ function App() {
   const [authState, setAuthState] = useState({
     username: "",
     id: 0,
+    role: "",
     status: false
   })
 
@@ -42,11 +43,12 @@ function App() {
       }
     }).then((response) => {
       if (response.data.error) {
-        setAuthState({ ...authState, status: false });
+        setAuthState({ ...authState, role: "", status: false });
       } else {
         setAuthState({
           username: response.data.username,
           id: response.data.id,
+          role: response.data.role,
           status: true
         });
       }
@@ -56,7 +58,9 @@ function App() {
     <div>
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
-          <Header />
+          {(authState.role !== 'Admin') && (
+            <Header />
+          )}
           <div>
             <Routes>
               <Route path="/" exact element={<Home />} />
@@ -72,14 +76,17 @@ function App() {
               <Route path="/AllPosts" exact element={<AllPosts />} />
               <Route path="/Profile" exact element={<Profile />} />
               <Route path="/EditProfile" exact element={<EditProfile />} />
-              {/* <Route path="/Admin" exact element={<Admin />} />
+              <Route path="/Admin" exact element={<Admin />} />
+
               <Route path="/ViewAllPosts" exact element={<ViewAllPosts />} />
               <Route path="/EditPost" exact element={<EditPost />} />
               <Route path="/ViewAllUsers" exact element={<ViewAllUsers />} />
-              <Route path="/EditUser" exact element={<EditUser />} /> */}
+              <Route path="/EditUser/:id" exact element={<EditUser />} />
             </Routes>
           </div>
-          <Footer />
+          {(authState.role !== 'Admin') && (
+            <Footer />
+          )}
         </Router>
       </AuthContext.Provider>
     </div>

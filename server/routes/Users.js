@@ -114,10 +114,10 @@ router.post("/login", async (req, res) => {
       if (!match) res.json({ error: "Wrong Username And Password Combination" });
       if (!user.confirmed) res.json({error: "Your account have not been confirmed. Please check your email!!!"})
       const accessToken = sign(
-      { username: user.username, id: user.id },
+      { username: user.username, id: user.id , role: user.user_role},
       "importantsecret"
       );
-      res.json({ token: accessToken, username: username, id: user.id });
+      res.json({ token: accessToken, username: username, id: user.id, role: user.user_role });
   });
 });
 router.get("/auth", validateToken, (req, res) => {
@@ -142,6 +142,11 @@ router.put("/changepassword", validateToken, async (req, res) => {
 router.get("/GetAllUsers", async (req, res) => {
   const listOfUserss = await Users.findAll();
   res.json(listOfUserss);
+});
+router.get("/ById/:id", async (req, res) => {
+  const id = req.params.id;
+  const user = await Users.findOne({ where: { id: id } });
+  res.json(user);
 });
 router.put("/UpdateRole", async (req, res) => {
   const { newRole, id } = req.body;
@@ -173,7 +178,16 @@ router.put("/EditUser/:userId", async (req, res) => {
     }, {where: {id: id}});
     res.json("SUCCESS")
   })
-  res.json(id)
+});
+router.delete("/:id", async (req, res) => {
+  const id = req.params.id;
+  await Users.destroy({
+    where: {
+      id: id,
+    },
+  });
+
+  res.json("DELETED SUCCESSFULLY");
 });
 
 module.exports = router;

@@ -12,6 +12,7 @@ function Header() {
         setAuthState({
             username: "",
             id: 0,
+            role: "",
             status: false
         })
     }
