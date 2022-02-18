@@ -2,8 +2,24 @@ import {Container, Row, Col, Card, Form, Button, Nav, Dropdown } from "react-boo
 import {Link} from 'react-router-dom'
 import {FaSearch, FaUserAlt} from 'react-icons/fa'
 import AdminNav from "./AdminNav";
+import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../helpers/AuthContext";
 
 function ViewAllPosts() {
+    const [userObjects, setUserObjects] = useState([]);
+    useEffect(()=>{
+        axios.get(`http://localhost:3001/users/GetAllUsers`).then((response)=>{
+            setUserObjects(response.data);
+        })
+    },[])
+    const Delete = (id) =>{
+        axios.delete(`http://localhost:3001/users/${id}`).then((response)=>{
+
+        })
+    }
   return (
     <>
         <div className="d-flex" id="wrapper">
@@ -46,47 +62,26 @@ function ViewAllPosts() {
                                             <th>FirstName</th>
                                             <th>LastName</th>
                                             <th>Email</th>
+                                            <th>Role</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>nhien259</td>
-                                            <td>Nhien</td>
-                                            <td>Tran</td>
-                                            <td>nhien@gmail.com</td>
-                                            <td><Link to='/EditUser' className="text-green">Edit</Link></td>
-                                            <td><a href="#" className="text-red">Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>duong1906</td>
-                                            <td>Duong</td>
-                                            <td>Phung</td>
-                                            <td>duong@gmail.com</td>
-                                            <td><Link to='/EditUser' className="text-green">Edit</Link></td>
-                                            <td><a href="#" className="text-red">Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>kara0101</td>
-                                            <td>Kara</td>
-                                            <td>Shara</td>
-                                            <td>kara@gmail.com</td>
-                                            <td><Link to='/EditUser' className="text-green">Edit</Link></td>
-                                            <td><a href="#" className="text-red">Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>toku1259</td>
-                                            <td>Toku</td>
-                                            <td>Kai</td>
-                                            <td>toku@gmail.com</td>
-                                            <td><Link to='/EditUser' className="text-green">Edit</Link></td>
-                                            <td><a href="#" className="text-red">Delete</a></td>
-                                        </tr>
+                                    {userObjects.map((value)=>{
+                                        return(
+                                            <tr>
+                                            <td>{value.id}</td>
+                                            <td>{value.username}</td>
+                                            <td>{value.user_lastname}</td>
+                                            <td>{value.user_firstname}</td>
+                                            <td>{value.user_email}</td>
+                                            <td>{value.user_role}</td>
+                                            <td><Link to={'/Edituser/' + value.id} className="text-green">Edit</Link></td>
+                                            <td><Link to="/ViewAllUsers" className="text-red" onClick={() => {Delete(value.id)}}>Delete</Link></td>
+                                            </tr>
+                                        )
+                                    })}
                                     </tbody>
                                 </table>
                             </div>

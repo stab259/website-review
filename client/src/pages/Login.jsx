@@ -7,7 +7,7 @@ import {Container, Row, Col, Form, Button} from 'react-bootstrap'
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const { AuthState, setAuthState } = useContext(AuthContext);
+    const { authState, setAuthState } = useContext(AuthContext);
     let navigate = useNavigate();
     axios.defaults.withCredentials = true;
     const login = () => {
@@ -18,15 +18,23 @@ function Login() {
             if (response.data.error) {
                 alert(response.data.error)
             }
-            alert(response.data)
             localStorage.setItem("accessToken", response.data.token)
             setAuthState({
                 username: response.data.username,
                 id: response.data.id,
+                role: response.data.role,
                 status: true,
             });
         })
-        navigate('/')
+
+        if (authState.role === 'Admin'){
+            navigate('/Admin')
+        }
+        else{
+            navigate('/')
+        }
+        
+
     }
     return (
         <Container fluid className="px-3">
