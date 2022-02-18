@@ -75,7 +75,7 @@ router.post('/send_email_comfirm', async(req,res) =>{
   const sent = sendEmail(email,token,subject,html);
   if (sent !=0){
     await Users.update({ confirm_token: token }, { where: { user_email: email } });
-    res.json("The reset password link has been sent to your email address")
+    res.json("The confirm account link has been sent to your email address")
   }
   else{
     res.json("Some thing went wrong!!!")

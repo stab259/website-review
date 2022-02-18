@@ -12,10 +12,12 @@ function Registration() {
     const signup = () => {
         const data = { user_email: emailReg, username: usernameReg, user_password: passwordReg }
         axios.post("http://localhost:3001/users", data).then((response) => {
-            alert(response.data)
-            navigate('/Login')
-
         })
+        const data2 = {email: emailReg}
+        axios.post("http://localhost:3001/users/send_email_comfirm", data).then((response) => {
+            alert(response.data)
+        })
+        navigate('/Login')
     }
     const policy = <span>By creating an account you agree to our <a href='#'>Terms & Privacy</a></span>;
 
