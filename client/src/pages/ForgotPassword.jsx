@@ -15,7 +15,6 @@ function ForgotPassword() {
         }
         alert(response.data)
     })
-    navigate('/ResetPassword')
 }
   return (
     <div className="bg-image-form bg-image-reset-password">
