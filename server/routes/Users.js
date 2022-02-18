@@ -60,7 +60,7 @@ router.post('/reset-password', async(req,res) =>{
   bcrypt.hash(newPassword, 10).then((hash) => {
     Users.update(
       { user_password: hash },
-      { where: { token: token } }
+      { where: { reset_token: token } }
     );
     res.json("SUCCESS");
   });
@@ -91,6 +91,8 @@ router.post('/confirm_email', async(req,res) =>{
 })
 router.post("/", async (req, res) => {
     const { user_email, username, user_password } = req.body;
+    const user = await Users.findOne({ where: { username: username } });
+    if (user) res.json({ error: "User Exist" });
     bcrypt.hash(user_password, 10).then((hash) => {
       Users.create({
         user_email : user_email,

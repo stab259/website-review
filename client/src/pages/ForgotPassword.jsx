@@ -1,7 +1,22 @@
 import {Container, Row, Col, Form, Button} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+import {useState } from 'react'
 
 function ForgotPassword() {
+  let navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const sendEmail = () => {
+    const data = {email: email }
+    axios.post("http://localhost:3001/Users/reset-password-email", data).then((response) => {
+
+        if (response.data.error) {
+            alert(response.data.error)
+        }
+        alert(response.data)
+    })
+    navigate('/ResetPassword')
+}
   return (
     <div className="bg-image-form bg-image-reset-password">
       <Container className="py-5">
@@ -13,10 +28,10 @@ function ForgotPassword() {
               </div>
               <Form.Group className="mb-4">
                   <Form.Label className="label text-primary-8">Enter your email address</Form.Label>
-                  <Form.Control type="email" name="email"/>
+                  <Form.Control type="email" name="email" onChange={(e) => {setEmail(e.target.value);}}/>
               </Form.Group>
               <Form.Group className="mb-4">
-                  <Button type="submit" className="primary btn-primary" as={Link} to='/ResetPassword'>Reset Password</Button>
+                  <Button type="submit" className="primary btn-primary" onClick={sendEmail}>Reset Password</Button>
               </Form.Group>
             </Form>
           </Col>
