@@ -62,7 +62,6 @@ router.post("/upload", upload.single('file'),validateToken, (req, res) => {
     if (!req.file) {
         console.log("No file upload"); 
     } else {
-        console.log(req.file.filename)
         const user_id = req.user.id
         const title = req.body.title
         const content = req.body.content
@@ -76,5 +75,24 @@ router.post("/upload", upload.single('file'),validateToken, (req, res) => {
             UserId : user_id   
           });
     }
+});
+
+router.put("/EditPost/:id", upload.single('file'),validateToken, (req, res) => {
+  if (!req.file) {
+      console.log("No file upload"); 
+  } else {
+      const user_id = req.user.id
+      const title = req.body.title
+      const content = req.body.content
+      const username = req.user.username
+      var imgsrc = 'http://127.0.0.1:3001/images/' + req.file.filename
+      Posts.update({
+          title : title,
+          postText: content,
+          username: username,
+          imgsrc : imgsrc,
+          UserId : user_id   
+        }, { where: { id: id } });
+  }
 });
 module.exports = router;

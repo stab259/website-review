@@ -7,26 +7,33 @@ import { useContext } from "react";
 import { AuthContext } from "../../helpers/AuthContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function EditUser() {
     let {id} = useParams()
+    let navigate = useNavigate()
     const { authState, setAuthState } = useContext(AuthContext);
-    const [userObjects, setUserObjects] = useState([]);
     const [username, setUsername] = useState("")
     const [lastname, setLastname] = useState("")
     const [firstname, setFirstname] = useState("")
     const [password, setPassword] = useState("")
-    const [Email, setEmail] = useState("")
+    const [email, setEmail] = useState("")
     const [role, setRole] = useState("")
 
     useEffect(()=>{
         axios.get(`http://localhost:3001/users/ById/${id}`).then((response)=>{
-            setUserObjects(response.data);
+            setUsername(response.data.username);
+            setLastname(response.data.user_firstname);
+            setFirstname(response.data.user_lastname);
+            setPassword(response.data.user_password);
+            setEmail(response.data.user_email);
+            setRole(response.data.user_role);
         })
     },[])
     const Edit = () =>{
         const data = {username: username, user_lastname: lastname, user_firstname: firstname, user_password: password, user_role: role}
         axios.put(`http://localhost:3001/users/EditUser/${id}`,data).then((response)=>{
+            navigate("/ViewAllUsers")
         })
     }
   return (
@@ -67,7 +74,7 @@ function EditUser() {
                                     <Form id="writeReviewsForm">
                                     <Form.Group className="mb-4">
                                         <Form.Label className="label text-primary-8">Username</Form.Label>
-                                        <Form.Control type="text" name="username"  value={userObjects.username}  onChange= {e => setUsername(e.target.value)}></Form.Control>
+                                        <Form.Control type="text" name="username"  value={username}  onChange= {(e) => setUsername(e.target.value)}></Form.Control>
                                     </Form.Group>
                                     {/* <Form.Group className="mb-4">
                                         <Form.Label className="label text-primary-8">Ava</Form.Label>
@@ -75,23 +82,23 @@ function EditUser() {
                                     </Form.Group> */}
                                     <Form.Group className="mb-4">
                                         <Form.Label className="label text-primary-8">First Name</Form.Label>
-                                        <Form.Control type="text" name="userFirstName" value= {userObjects.user_firstname} onChange= {e => setFirstname(e.target.value)}/>
+                                        <Form.Control type="text" name="userFirstName" value= {firstname} onChange= {(e) => setFirstname(e.target.value)}/>
                                     </Form.Group>
                                     <Form.Group className="mb-4">
                                         <Form.Label className="label text-primary-8">Last Name</Form.Label>
-                                        <Form.Control type="text" name="userLastName" value= {userObjects.user_lastname } onChange= {e => setLastname(e.target.value)}/>
+                                        <Form.Control type="text" name="userLastName" value= {lastname } onChange= {(e) => setLastname(e.target.value)}/>
                                     </Form.Group>
                                     <Form.Group className="mb-4">
                                         <Form.Label className="label text-primary-8">Email</Form.Label>
-                                        <Form.Control type="text" name="userPassword" value= {userObjects.user_email} onChange= {e => setEmail(e.target.value)}/>
+                                        <Form.Control type="text" name="userPassword" value= {email} onChange= {(e) => setEmail(e.target.value)}/>
                                     </Form.Group>
                                     <Form.Group className="mb-4">
                                         <Form.Label className="label text-primary-8">Role</Form.Label>
-                                        <Form.Control type="text" name="userPassword" value= {userObjects.user_role} onChange= {e => setRole(e.target.value)}/>
+                                        <Form.Control type="text" name="userPassword" value= {role} onChange= {(e) => setRole(e.target.value)}/>
                                     </Form.Group>
                                     <Form.Group className="mb-4">
                                         <Form.Label className="label text-primary-8">Password</Form.Label>
-                                        <Form.Control type="password" name="userPassword" value= {userObjects.user_password} onChange= {e => setPassword(e.target.value)}/>
+                                        <Form.Control type="password" name="userPassword" value= {password} onChange= {(e) => setPassword(e.target.value)}/>
                                     </Form.Group>
                                     <Form.Group className="mb-4">
                                         <Button type="submit" className="primary btn-primary" onClick={Edit}>Update User</Button>
