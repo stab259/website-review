@@ -54,30 +54,32 @@ function App() {
     })
   })
   return (
-    <div>
+    <div id='wrapper'>
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
           <Header />
-          <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/Home" exact element={<Home />} />
-            <Route path="/Login" exact element={<Login />} />
-            <Route path="/Signup" exact element={<Registration />} />
-            <Route path="/Post/:id" exact element={<Post />} />
-            <Route path='/reset-password/:id' exact element={<ResetPassword />} />
-            <Route path="/Post" exact element={<Post />} />
-            <Route path="/WriteReviews" exact element={<WriteReviews />} />
-            <Route path="/ForgotPassword" exact element={<ForgotPassword />} />
-            <Route path="/ResetPassword/:id" exact element={<ResetPassword />} />
-            <Route path="/AllPosts" exact element={<AllPosts />} />
-            <Route path="/Profile" exact element={<Profile />} />
-            {/* <Route path="/Posts" exact element={<AllPost />} />
-            <Route path="/Middle" exact element={<MiddlePage />} />
-            <Route path="/Posts/:id" exact element={<PostByID />} />
-            <Route path="/Details" exact element={<NewDetails />} />
-            <Route path="/WriteReviews" exact element={<WriteReviews />} /> */}
-            {/* <Route path="/Admin" exact element={<Admin />} /> */}
-          </Routes>
+          <div id="main">
+            <Routes>
+              <Route path="/" exact element={<Home />} />
+              <Route path="/Home" exact element={<Home />} />
+              <Route path="/Login" exact element={<Login />} />
+              <Route path="/Signup" exact element={<Registration />} />
+              <Route path="/Post/:id" exact element={<Post />} />
+              <Route path='/reset-password/:id' exact element={<ResetPassword />} />
+              <Route path="/Post" exact element={<Post />} />
+              <Route path="/WriteReviews" exact element={<WriteReviews />} />
+              <Route path="/ForgotPassword" exact element={<ForgotPassword />} />
+              <Route path="/ResetPassword" exact element={<ResetPassword />} />
+              <Route path="/AllPosts" exact element={<AllPosts />} />
+              <Route path="/Profile" exact element={<Profile />} />
+              {/* <Route path="/Posts" exact element={<AllPost />} />
+              <Route path="/Middle" exact element={<MiddlePage />} />
+              <Route path="/Posts/:id" exact element={<PostByID />} />
+              <Route path="/Details" exact element={<NewDetails />} />
+              <Route path="/WriteReviews" exact element={<WriteReviews />} /> */}
+              {/* <Route path="/Admin" exact element={<Admin />} /> */}
+            </Routes>
+          </div>
           <Footer />
         </Router>
       </AuthContext.Provider>

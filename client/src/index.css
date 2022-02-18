@@ -29,7 +29,7 @@ h2,
 
 /* ---------- Header ---------- */
 
-.header {
+#header {
   line-height: 1;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -79,6 +79,28 @@ h2,
 /* -----x----- Header END -----x----- */
 
 /* ---------- Footer ---------- */
+
+/* #wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+#main {
+  min-height: calc(100vh - 130px);
+}
+
+#header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+} */
 
 .footer {
   line-height: 1;
@@ -151,8 +173,9 @@ h2,
   position: relative;
   align-items: center;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   background-size: cover;
+  min-height: calc(100vh - 130px);
 }
 
 .bg-image-write-reviews {
