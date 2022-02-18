@@ -21,7 +21,7 @@ function ForgotPassword() {
       <Container className="py-5">
         <Row className="d-flex justify-content-center align-items-center">
           <Col md={8} lg={6}>
-            <Form id="writeReviewsForm" className="text-center">
+            <Form className="text-center form-1">
               <div className="mb-5">
                 <h2 className="text-primary">Forgot Password?</h2>
               </div>
