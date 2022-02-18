@@ -5,6 +5,7 @@ import React, { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../helpers/AuthContext";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import {FaHeart} from 'react-icons/fa'
 
 
 function PostDetails() {
@@ -48,7 +49,10 @@ function PostDetails() {
                         </p>
                     </div>
                     <hr/>
-                    <Comments />
+                    <div className="d-flex justify-content-end">
+                        <button class="btn btn-block btn-outline-dark"><FaHeart className="me-2" />Like</button>
+                    </div>
+                    <Comments /> 
                     <CommentForms />
                 </Col>
             </Row>
