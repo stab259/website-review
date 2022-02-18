@@ -67,7 +67,7 @@ function App() {
               <Route path="/Post" exact element={<Post />} />
               <Route path="/WriteReviews" exact element={<WriteReviews />} />
               <Route path="/ForgotPassword" exact element={<ForgotPassword />} />
-              <Route path="/ResetPassword" exact element={<ResetPassword />} />
+              <Route path="/ResetPassword/:id" exact element={<ResetPassword />} />
               <Route path="/AllPosts" exact element={<AllPosts />} />
               <Route path="/Profile" exact element={<Profile />} />
               {/* <Route path="/Admin" exact element={<Admin />} />
