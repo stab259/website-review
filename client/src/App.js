@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss'
 import './index.css';
@@ -28,6 +27,7 @@ import ViewAllPosts from './pages/admin/ViewAllPosts';
 import EditPost from './pages/admin/EditPost';
 import ViewAllUsers from './pages/admin/ViewAllUsers';
 import EditUser from './pages/admin/EditUser';
+import PostDetails from './component/PostDetails';
 
 
 function App() {
@@ -71,7 +71,6 @@ function App() {
               <Route path="/Signup" exact element={<Registration />} />
               <Route path="/Post/:id" exact element={<Post />} />
               <Route path='/reset-password/:id' exact element={<ResetPassword />} />
-              <Route path="/Post" exact element={<Post />} />
               <Route path="/WriteReviews/*" exact element={<WriteReviews />} />
               <Route path="/ForgotPassword" exact element={<ForgotPassword />} />
               <Route path="/ResetPassword/:id" exact element={<ResetPassword />} />
@@ -79,12 +78,12 @@ function App() {
               <Route path="/Profile" exact element={<Profile />} />
               <Route path="/EditProfile" exact element={<EditProfile />} />
               <Route path="/Admin" exact element={<Admin />} />
-
               <Route path="/ViewAllPosts" exact element={<ViewAllPosts />} />
               <Route path="/EditPost/:id" exact element={<EditPost />} />
               <Route path="/ViewAllUsers" exact element={<ViewAllUsers />} />
               <Route path="/EditUser/:id" exact element={<EditUser />} />
               <Route path="/Dashboard" exact element={<DashBoard />} />
+              <Route path="/PostDetails/:id" exact element={<PostDetails />} />
             </Routes>
           </div>
           {(authState.role !== 'Admin') && (

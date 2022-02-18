@@ -15,9 +15,13 @@ function PostDetails() {
     useEffect(() => {
         axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
           setPostObject(response.data);
-
+          console.log(postObject)
         });
     }, []);
+    const likeAPost = (postId) => {
+
+    }
+
   return (
     <section>
         <Container fluid className="px-0">
@@ -50,10 +54,11 @@ function PostDetails() {
                     </div>
                     <hr/>
                     <div className="d-flex justify-content-end">
-                        <button class="btn btn-block btn-outline-dark"><FaHeart className="me-2" />Like</button>
+                        {/* <label> {postObject.Likes.length} </label> */}
+                        <button class="btn btn-block btn-outline-dark" onClick={likeAPost}><FaHeart className="me-2" />Like</button>
                     </div>
-                    <Comments /> 
-                    <CommentForms />
+                    <Comments id = {id} /> 
+                    <CommentForms id = {id} />
                 </Col>
             </Row>
         </Container>

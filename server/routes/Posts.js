@@ -13,7 +13,7 @@ router.get("/", validateToken, async (req, res) => {
 
 router.get("/byId/:id", async (req, res) => {
   const id = req.params.id;
-  const post = await Posts.findByPk(id);
+  const post = await Posts.findOne({where: { id: id },include: [Likes]});
   res.json(post);
 });
 

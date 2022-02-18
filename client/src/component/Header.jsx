@@ -55,7 +55,7 @@ function Header() {
                                     Dinh Duong
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item as={Link} to='/'>Profile</Dropdown.Item>
+                                    <Dropdown.Item as={Link} to='/Profile'>Profile</Dropdown.Item>
                                     <Dropdown.Divider/>
                                     <Dropdown.Item onClick={logout} >Sign out</Dropdown.Item>
                                 </Dropdown.Menu>
