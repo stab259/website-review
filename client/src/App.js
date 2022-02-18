@@ -13,7 +13,8 @@ import WriteReviews from './pages/WriteReviews';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import AllPosts from './pages/AllPosts';
-import Profile from './pages/Profile';
+// import Profile from './pages/Profile';
+import TravelForm from './component/TravelForm';
 
 import { AuthContext } from './helpers/AuthContext';
 import axios from 'axios';
@@ -65,11 +66,11 @@ function App() {
               <Route path="/Post/:id" exact element={<Post />} />
               <Route path='/reset-password/:id' exact element={<ResetPassword />} />
               <Route path="/Post" exact element={<Post />} />
-              <Route path="/WriteReviews" exact element={<WriteReviews />} />
+              <Route path="/WriteReviews/*" exact element={<WriteReviews />} />
               <Route path="/ForgotPassword" exact element={<ForgotPassword />} />
               <Route path="/ResetPassword/:id" exact element={<ResetPassword />} />
               <Route path="/AllPosts" exact element={<AllPosts />} />
-              <Route path="/Profile" exact element={<Profile />} />
+              {/* <Route path="/Profile" exact element={<Profile />} /> */}
               {/* <Route path="/Admin" exact element={<Admin />} />
               <Route path="/ViewAllPosts" exact element={<ViewAllPosts />} />
               <Route path="/EditPost" exact element={<EditPost />} />
