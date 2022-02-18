@@ -16,6 +16,8 @@ import AllPosts from './pages/AllPosts';
 import Profile from './pages/Profile';
 import TravelForm from './component/TravelForm';
 import DashBoard from './pages/admin/Dashboard'
+import EditProfile from './pages/EditProfile';
+
 import { AuthContext } from './helpers/AuthContext';
 import axios from 'axios';
 
@@ -43,7 +45,7 @@ function App() {
       }
     }).then((response) => {
       if (response.data.error) {
-        setAuthState({ ...authState, role: "",status: false });
+        setAuthState({ ...authState, role: "", status: false });
       } else {
         setAuthState({
           username: response.data.username,
@@ -75,7 +77,9 @@ function App() {
               <Route path="/ResetPassword/:id" exact element={<ResetPassword />} />
               <Route path="/AllPosts" exact element={<AllPosts />} />
               <Route path="/Profile" exact element={<Profile />} />
+              <Route path="/EditProfile" exact element={<EditProfile />} />
               <Route path="/Admin" exact element={<Admin />} />
+
               <Route path="/ViewAllPosts" exact element={<ViewAllPosts />} />
               <Route path="/EditPost/:id" exact element={<EditPost />} />
               <Route path="/ViewAllUsers" exact element={<ViewAllUsers />} />

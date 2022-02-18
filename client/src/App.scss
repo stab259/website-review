@@ -31,7 +31,11 @@ ol {
 }
 
 .bg-primary {
-  background-color: #ffc107 !important;
+  background-color: $yellow !important;
+}
+
+.bg-primary-9 {
+  background-color: $yellow-900 !important;
 }
 
 .text-green {

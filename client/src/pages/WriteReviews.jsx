@@ -29,7 +29,7 @@ function WriteReviews() {
       <Container className="py-5">
         <Row className="d-flex justify-content-center align-items-center">
           <Col md={8}>
-            <Form id="writeReviewsForm">
+            <Form className="form-1">
               <div className="mb-5">
                 <h2 className="text-primary">Write a Review</h2>
               </div>

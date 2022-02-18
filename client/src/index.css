@@ -198,6 +198,7 @@ h2,
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
   min-height: calc(100vh - 130px);
 }
 
@@ -207,6 +208,10 @@ h2,
 
 .bg-image-reset-password {
   background-image: url("https://t3.ftcdn.net/jpg/03/27/51/56/360_F_327515607_Hcps04aaEc7Ki43d1XZPxwcv0ZaIaorh.jpg");
+}
+
+.bg-image-profile {
+  background-image: url("https://images.unsplash.com/photo-1620299813821-01fc99b67409?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fHZpZXRuYW18ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60");
 }
 
 .bg-image {
@@ -424,6 +429,16 @@ a.hover-underline:hover {
   object-fit: cover;
 }
 
+.avatar-lg {
+  width: 5rem;
+  height: 5rem;
+}
+
+.avatar-xl {
+  width: 7rem;
+  height: 7rem;
+}
+
 .text-content p {
   margin-bottom: 2rem;
 }
@@ -432,14 +447,14 @@ a.hover-underline:hover {
 
 /* ---------- WriteReviews ---------- */
 
-#writeReviewsForm {
+.form-1 {
   background-color: #fff;
   margin: 0px auto;
   padding: 40px;
   border-radius: 10px;
 }
 
-#writeReviewsForm label {
+.form-1 label {
   font-weight: 600;
 }
 
