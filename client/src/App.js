@@ -9,25 +9,23 @@ import Footer from './component/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
-// import ResetPassword from './component/Home';
 import WriteReviews from './pages/WriteReviews';
-//import ResetPassword from './pages/ResetPassword';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import AllPosts from './pages/AllPosts';
 import Profile from './pages/Profile';
-// import AllPost from './pages/AllPost';
-// import PostByID from './pages/PostByID';
-// import NewDetails from './pages/NewDetails';
-// import WriteReview from './pages/WriteReview';
-// import MiddlePage from './pages/MiddlePage';
-// import Test from './component/Test';
+
 import { AuthContext } from './helpers/AuthContext';
 import axios from 'axios';
 
 import Post from './pages/Post'
 
-// import Admin from './pages/admin/Admin';
+import Admin from './pages/admin/Admin';
+import ViewAllPosts from './pages/admin/ViewAllPosts';
+import EditPost from './pages/admin/EditPost';
+import ViewAllUsers from './pages/admin/ViewAllUsers';
+import EditUser from './pages/admin/EditUser';
+
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -54,11 +52,11 @@ function App() {
     })
   })
   return (
-    <div id='wrapper'>
+    <div>
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
           <Header />
-          <div id="main">
+          <div>
             <Routes>
               <Route path="/" exact element={<Home />} />
               <Route path="/Home" exact element={<Home />} />
@@ -72,12 +70,11 @@ function App() {
               <Route path="/ResetPassword" exact element={<ResetPassword />} />
               <Route path="/AllPosts" exact element={<AllPosts />} />
               <Route path="/Profile" exact element={<Profile />} />
-              {/* <Route path="/Posts" exact element={<AllPost />} />
-              <Route path="/Middle" exact element={<MiddlePage />} />
-              <Route path="/Posts/:id" exact element={<PostByID />} />
-              <Route path="/Details" exact element={<NewDetails />} />
-              <Route path="/WriteReviews" exact element={<WriteReviews />} /> */}
-              {/* <Route path="/Admin" exact element={<Admin />} /> */}
+              {/* <Route path="/Admin" exact element={<Admin />} />
+              <Route path="/ViewAllPosts" exact element={<ViewAllPosts />} />
+              <Route path="/EditPost" exact element={<EditPost />} />
+              <Route path="/ViewAllUsers" exact element={<ViewAllUsers />} />
+              <Route path="/EditUser" exact element={<EditUser />} /> */}
             </Routes>
           </div>
           <Footer />
